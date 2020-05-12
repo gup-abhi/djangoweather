@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Weather</title>
+    <style>
+        .good {background-color: #0C0;}
+        .moderate {background-color: #FFFF00;}
+        .usg {background-color: #FF9900;}
+        .unhealthy {background-color: #FF0000;}
+        .veryunhealthy {background-color: #990066;}
+        .hazardous {background-color: #660000;}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,8 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">About Me</a>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{% url 'home' %}" method="POST" class="form-inline my-2 my-lg-0">
+            {% csrf_token %}
+            <input name="zipcode" class="form-control mr-sm-2" type="search" placeholder="Enter Zip code" aria-label="Search">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
